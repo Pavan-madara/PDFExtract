@@ -1,6 +1,5 @@
 package com.madara.security.mapper;
 
-import com.madara.security.model.Client;
 import com.madara.security.response.DTO.ClientDTO;
 import org.springframework.stereotype.Component;
 

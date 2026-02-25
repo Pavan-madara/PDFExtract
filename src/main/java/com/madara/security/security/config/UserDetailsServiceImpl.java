@@ -1,6 +1,7 @@
 package com.madara.security.security.config;
 
 import com.madara.security.Exception.type.UserNotFoundException;
+import com.madara.security.model.User;
 import com.madara.security.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
@@ -19,10 +20,16 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return userRepository.findByEmail(username)
+        User user = userRepository.findByEmail(username)
                 .orElseThrow(() -> {
                     logger.error("The user {} is not found", username);
                     return new UserNotFoundException("User not found");
                 });
+        return new CustomUserDetails(
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getAuthorities()
+        );
     }
 }

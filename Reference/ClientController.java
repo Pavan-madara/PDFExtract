@@ -1,9 +1,7 @@
 package com.madara.security.controller;
 
-import com.madara.security.model.Client;
 import com.madara.security.response.DTO.ApiResponse;
 import com.madara.security.response.DTO.ClientDTO;
-import com.madara.security.service.ClientService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
